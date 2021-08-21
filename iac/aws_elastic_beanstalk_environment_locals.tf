@@ -11,6 +11,11 @@ locals {
       value     = aws_vpc.main.id
     },
     {
+      namespace = "aws:ec2:vpc"
+      name      = "Subnets"
+      value     = aws_subnet.eb.id
+    },
+    {
       namespace = "aws:elasticbeanstalk:application:environment"
       name      = "DB_USER"
       value     = aws_db_instance.database.username
