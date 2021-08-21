@@ -19,7 +19,7 @@ resource "aws_db_instance" "database" {
   allocated_storage    = 20
   engine               = "mysql"
   engine_version       = "5.7"
-  name                 = "db-${var.owner}---${var.env}"
+  name                 = lower("${var.owner}${var.env}")
   instance_class       = var.db_instance_type
   parameter_group_name = "default.mysql5.7"
   username             = var.owner
