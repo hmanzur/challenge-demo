@@ -1,24 +1,22 @@
 const express = require("express");
-const bodyParser = require("body-parser");
-const cors = require("cors");
-require('dotenv').config()
-const path = __dirname + '/app/views/';
 
 const app = express();
 
-app.use(express.static(path));
 
-var corsOptions = {
-  origin: "*"
-};
+if (process.env.NODE_ENV === "development") {
+  const cors = require("cors");
+  var corsOptions = {
+    origin: "*"
+  };
 
-app.use(cors(corsOptions));
+  app.use(cors(corsOptions));
+}
 
 // parse requests of content-type - application/json
-app.use(bodyParser.json());
+app.use(express.json());
 
 // parse requests of content-type - application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true }));
 
 const db = require("./app/models");
 
@@ -28,9 +26,10 @@ db.sequelize.sync();
 //   console.log("Drop and re-sync db.");
 // });
 
-app.get('/', function (req,res) {
-  res.sendFile(path + "index.html");
-});
+// Moved to S3 bucket with website configuration
+// app.get('/', function (req,res) {
+//   res.sendFile(path + "index.html");
+// });
 
 require("./app/routes/turorial.routes")(app);
 
