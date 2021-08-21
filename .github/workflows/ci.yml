@@ -1,4 +1,4 @@
-name: 'Terraform'
+name: 'CI'
 
 on:
   workflow_dispatch:
@@ -8,11 +8,8 @@ jobs:
     name: 'Provision Infraestructure'
     runs-on: ubuntu-latest
     environment: production
-
-    # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
-    defaults:
-      run:
-        shell: bash
+    env:
+      working_directory: ./iac
 
     steps:
     # Checkout the repository to the GitHub Actions runner
@@ -33,6 +30,7 @@ jobs:
       run: terraform apply -auto-approve
       
   application:
+    needs: terraform
     name: 'Deploy Application'
     runs-on: ubuntu-latest
     environment: production
@@ -56,6 +54,7 @@ jobs:
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         
   website:
+    needs: terraform
     name: 'Deploy Website'
     runs-on: ubuntu-latest
     environment: production

@@ -1,0 +1,11 @@
+# Dependenceis
+node_modules/
+
+# Apps / dirs to ignore
+website/
+iac/
+.github/
+app/tests/
+
+# Files to ignore
+*.md
