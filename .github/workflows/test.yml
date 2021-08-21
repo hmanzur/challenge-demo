@@ -6,14 +6,21 @@ on:
     branches:
     - master
 
+    paths-ignore:
+      - '**.md'
+      - 'website'
+      - 'app'
   pull_request:
-
+      - '**.md'
+      - 'website'
+      - 'app'
 
 jobs:
   teraform:
     name: Test Terraform Code
-    
     runs-on: ubuntu-latest
+    env:
+      working_directory: ./iac
     
     steps:
     # Checkout the repository to the GitHub Actions runner
