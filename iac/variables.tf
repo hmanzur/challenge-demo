@@ -18,7 +18,7 @@ variable "app_instance_type" {
 
 variable "db_instance_type" {
   type        = string
-  default     = "t2.micro"
+  default     = "db.t3.micro"
   description = "App RDS instance type"
 }
 
