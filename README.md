@@ -1,6 +1,8 @@
 # Live example
 Check out a running example in this URL: http://dev.devopschallenge.link/
 
+[![Provisioning](https://github.com/hmanzur/challenge-demo/actions/workflows/provision.yml/badge.svg)](https://github.com/hmanzur/challenge-demo/actions/workflows/provision.yml)
+
 # Running the app
 
 _Required Node version: 12.*_
