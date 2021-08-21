@@ -19,8 +19,10 @@ jobs:
   teraform:
     name: Test Terraform Code
     runs-on: ubuntu-latest
-    env:
-      working_directory: ./iac
+    
+    defaults:
+      run:
+        working-directory:iac
     
     steps:
     # Checkout the repository to the GitHub Actions runner
