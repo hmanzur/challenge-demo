@@ -7,7 +7,7 @@ locals {
   rds_name       = lower("rds-${var.owner}-${var.env}") # Due "identifier" cannot contain two consecutive hyphens
 
   eb_env_name = title("${var.owner}${var.env}")
-  eb_app_name = "${var.env}---${var.owner}"
+  eb_app_name = "${var.env}-${var.owner}"
 
   tags = {
     Terraform   = true
