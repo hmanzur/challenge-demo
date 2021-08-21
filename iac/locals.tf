@@ -6,7 +6,7 @@ locals {
   sg_name        = lower("${var.owner}---${var.env}")   # Segurity group name always starts with sg-
   rds_name       = lower("rds-${var.owner}-${var.env}") # Due "identifier" cannot contain two consecutive hyphens
 
-  eb_env_name = "${var.env} - ${var.owner}"
+  eb_env_name = title("${var.owner} ${var.env}")
   eb_app_name = "${var.env}---${var.owner}"
 
   tags = {
