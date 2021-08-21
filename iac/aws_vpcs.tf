@@ -16,3 +16,9 @@ resource "aws_subnet" "eb" {
 
   tags = local.tags
 }
+
+resource "aws_vpn_gateway" "vpn_gw" {
+  vpc_id = aws_vpc.main.id
+
+  tags = local.tags
+}
