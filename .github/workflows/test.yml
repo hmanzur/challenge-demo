@@ -22,7 +22,7 @@ jobs:
     
     defaults:
       run:
-        working-directory:iac
+        working-directory: iac
     
     steps:
     # Checkout the repository to the GitHub Actions runner
