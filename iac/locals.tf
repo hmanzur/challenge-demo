@@ -3,7 +3,7 @@ locals {
 
   s3_bucket_name = lower("website-${var.owner}---${var.env}")
   vpc_name       = lower("vpc-${var.owner}---${var.env}")
-  sg_name        = lower("sg-${var.owner}---${var.env}")
+  sg_name        = lower("${var.owner}---${var.env}") # Segurity group name always starts with sg-
   rds_name       = lower("rds-${var.owner}-${var.env}") # Due "identifier" cannot contain two consecutive hyphens
 
   eb_env_name = "${var.env} - ${var.owner}"
