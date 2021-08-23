@@ -21,4 +21,8 @@ resource "aws_elastic_beanstalk_environment" "env" {
   }
 
   tags = local.tags
+
+  depends_on = [
+    aws_vpn_gateway.vpn_gw
+  ]
 }

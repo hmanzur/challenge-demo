@@ -23,5 +23,21 @@ variable "db_instance_type" {
 }
 
 variable "ingress_rules" {
-  default = []
+  default = [
+    {
+      from_port   = 80,
+      to_port     = 80,
+      protocol    = "ip",
+      cidr_block  = "0.0.0.0/0",
+      description = "Public http"
+    },
+
+    {
+      from_port   = 443,
+      to_port     = 443,
+      protocol    = "ip",
+      cidr_block  = "0.0.0.0/0",
+      description = "Public http"
+    }
+  ]
 }

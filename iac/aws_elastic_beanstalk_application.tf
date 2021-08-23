@@ -24,4 +24,8 @@ resource "aws_elastic_beanstalk_application" "app" {
     max_count             = 30
     delete_source_from_s3 = true
   }
+
+  depends_on = [
+    aws_vpn_gateway.vpn_gw
+  ]
 }

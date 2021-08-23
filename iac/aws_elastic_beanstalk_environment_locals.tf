@@ -16,6 +16,11 @@ locals {
       value     = aws_subnet.eb.id
     },
     {
+      namespace = "aws:autoscaling:launchconfiguration"
+      name      = "SecurityGroups"
+      value     = aws_security_group.default.id
+    },
+    {
       namespace = "aws:elasticbeanstalk:application:environment"
       name      = "DB_USER"
       value     = aws_db_instance.database.username
@@ -48,6 +53,11 @@ locals {
         namespace = "aws:elasticbeanstalk:application:environment"
         name      = "PORT"
         value     = 80 // In case of use ssl change for 443
+      },
+      {
+        namespace = "aws:elasticbeanstalk:environment"
+        name      = "LoadBalancerType"
+        value     = "application"
       }
     ]),
 
