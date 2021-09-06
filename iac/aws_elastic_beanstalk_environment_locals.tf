@@ -2,6 +2,11 @@ locals {
   default_settings = [
     {
       namespace = "aws:autoscaling:launchconfiguration"
+      name      = "IamInstanceProfile"
+      value     = "aws-elasticbeanstalk-ec2-role"
+    },
+    {
+      namespace = "aws:autoscaling:launchconfiguration"
       name      = "InstanceType"
       value     = var.app_instance_type
     },
@@ -44,11 +49,6 @@ locals {
 
   settings = {
     Production : concat(local.default_settings, [
-      {
-        namespace = "aws:autoscaling:launchconfiguration"
-        name      = "IamInstanceProfile"
-        value     = "aws-elasticbeanstalk-ec2-role"
-      },
       {
         namespace = "aws:elasticbeanstalk:application:environment"
         name      = "PORT"
